@@ -32,7 +32,7 @@ matplotlib==3.4.3
     # via
     #   -r requirements.in
     #   seaborn
-numpy==1.21.2
+numpy==1.22.3
     # via
     #   matplotlib
     #   opencv-python-headless
