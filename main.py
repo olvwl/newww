@@ -29,3 +29,6 @@ async def detect_food_return_base64_img(file: bytes = File(...)):
         img_base64 = Image.fromarray(img)
         img_base64.save(bytes_io, format="jpeg")
     return Response(content=bytes_io.getvalue(), media_type="image/jpeg")
+
+    if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
