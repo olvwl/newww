@@ -10,6 +10,8 @@ app = FastAPI()
 
 model = get_yolov5()
 
+path = "home/syafridamelania/github/newww"
+
 @app.post("/object-to-json")
 async def detect_food_return_json_result(file: bytes = File(...)):
     input_image = get_image_from_bytes(file)
