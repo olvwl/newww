@@ -36,7 +36,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-path = "D:/flask/fastAPI/yolov5-fastapi"
+path = "/home/syafridamelania/github/newww"
 
 class json_object(BaseModel):
     imageUrl : str
