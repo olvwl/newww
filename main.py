@@ -71,6 +71,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
             image.close()
             
         filePath = os.path.join(path, "image.jpeg")
-        jsonConvert = '{"imageUrl" : "D:/flask/fastAPI/yolov5-fastapi/image.jpeg"}'
+        jsonConvert = '{"imageUrl" : "/home/syafridamelania/github/newww/image.jpeg"}'
         x = json.loads(jsonConvert)
     return x
