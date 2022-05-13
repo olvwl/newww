@@ -6,6 +6,7 @@ import io
 from PIL import Image
 import json
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
