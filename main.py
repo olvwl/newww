@@ -29,12 +29,11 @@ async def detect_return_base64_img(file: bytes = File(...)):
         bytes_io = io.BytesIO()
         img_base64 = Image.fromarray(img)
         img_base64.save(bytes_io, format="jpeg")
-        ##print("kucing", bytes_io)
         imageResult = Response(bytes_io.getvalue(), media_type= "image/jpeg")
     
         image_data = bytes_io.getvalue()
 
-        with open('$image.jpeg','wb') as image:
+        with open('image.jpeg','wb') as image:
             image.write(image_data)
             image.close()
 
