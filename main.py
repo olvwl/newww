@@ -1,4 +1,5 @@
 import os
+from google.cloud import storage
 from fastapi import FastAPI, File
 from segmentation import get_yolov5, get_image_from_bytes
 from starlette.responses import Response
@@ -37,9 +38,6 @@ app.add_middleware(
 )
 
 path = "/home/syafridamelania/github/newww"
-
-class json_object(BaseModel):
-    imageUrl : str
     
 
 @app.post("/object-to-json")
@@ -69,8 +67,13 @@ async def detect_return_base64_img(file: bytes = File(...)):
         with open('image.jpeg','wb') as image:
             image.write(image_data)
             image.close()
-            
+
         filePath = os.path.join(path, "image.jpeg")
-        jsonConvert = '{"imageUrl" : "/home/syafridamelania/github/newww/image.jpeg"}'
-        x = json.loads(jsonConvert)
-    return x
+
+    client = storage.Client()
+    bucket = client.get_bucket('olvwl-server.appspot.com')
+
+    imageBlob = bucket.get_blob('image.jpeg')
+    imageBlob.upload_from_filename(filename='filePath')
+
+    return FileResponse(filePath)
