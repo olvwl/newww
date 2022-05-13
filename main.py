@@ -74,6 +74,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
     bucket = client.get_bucket('olvwl-server.appspot.com')
 
     imageBlob = bucket.get_blob('image.jpeg')
-    imageBlob.upload_from_filename(filename='filePath')
+    imageBlob.write(filePath)
 
     return FileResponse(filePath)
