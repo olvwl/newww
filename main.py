@@ -77,4 +77,4 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         filePath = os.path.join(path, "image.jpeg")
 
-    return {'imageURL : '}
+    return {'imageURL' : https://storage.googleapis.com/olvwl-server.appspot.com/image.jpeg}
