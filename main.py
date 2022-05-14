@@ -70,6 +70,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         filePath = os.path.join(path, "image.jpeg")
         
-        gsutil cp /home/syafridamelania/newww/image.jpeg gs://olvwl-server.appspot.com
+        sendFile = gsutil cp /home/syafridamelania/newww/image.jpeg gs://olvwl-server.appspot.com
 
     return imageResult
