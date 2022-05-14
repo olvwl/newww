@@ -56,6 +56,7 @@ async def detect_return_base64_img(file: bytes = File(...)):
     results.render()  # updates results.imgs with boxes and labels
     ##print("kucing" ,results)
     client = storage.Client()
+    bucket = client.get_bucket('olvwl-server.appspot.com')
     for img in results.imgs:
         bytes_io = io.BytesIO()
         img_base64 = Image.fromarray(img)
@@ -67,8 +68,10 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         with open('image.jpeg','wb') as image:
             image.write(image_data)
-            client.download_blob_to_file('gs://olvwl-server.appspot.com', image_data)
             image.close()
+            
+        blob = bucket.blob('image.jpeg')
+        blob.upload_from_filename('image.jpeg')
 
         filePath = os.path.join(path, "image.jpeg")
 
