@@ -72,7 +72,9 @@ async def detect_return_base64_img(file: bytes = File(...)):
             
         blob = bucket.blob('image.jpeg')
         blob.upload_from_filename('image.jpeg')
+        blob.make_public()
+        url = blob.public_url
 
         filePath = os.path.join(path, "image.jpeg")
 
-    return imageResult
+    return {'imageURL : '}
