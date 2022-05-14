@@ -67,7 +67,7 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         with open('image.jpeg','wb') as image:
             image.write(image_data)
-            client.download_blob_to_file('gs://olvwl-server.appspot.com', image)
+            client.write('gs://olvwl-server.appspot.com', image)
             image.close()
 
         filePath = os.path.join(path, "image.jpeg")
