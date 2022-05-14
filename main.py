@@ -1,5 +1,5 @@
 import os
-import gsutil 
+from google.cloud import storage
 from fastapi import FastAPI, File
 from segmentation import get_yolov5, get_image_from_bytes
 from starlette.responses import Response
@@ -55,6 +55,7 @@ async def detect_return_base64_img(file: bytes = File(...)):
     results = model(input_image)
     results.render()  # updates results.imgs with boxes and labels
     ##print("kucing" ,results)
+    client = storage.Client()
     for img in results.imgs:
         bytes_io = io.BytesIO()
         img_base64 = Image.fromarray(img)
@@ -66,10 +67,9 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         with open('image.jpeg','wb') as image:
             image.write(image_data)
+            client.download_blob_to_file('gs://olvwl-server.appspot.com', image)
             image.close()
 
         filePath = os.path.join(path, "image.jpeg")
-        
-        sendFile = gsutil /home/syafridamelania/newww/image.jpeg gs://olvwl-server.appspot.com
 
     return imageResult
