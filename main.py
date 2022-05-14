@@ -1,5 +1,4 @@
 import os
-from google.cloud import storage
 from fastapi import FastAPI, File
 from segmentation import get_yolov5, get_image_from_bytes
 from starlette.responses import Response
@@ -68,12 +67,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
             image.write(image_data)
             image.close()
 
-        filePath = os.path.join(path, "image.jpeg")
-
-    client = storage.Client()
-    bucket = client.get_bucket('olvwl-server.appspot.com')
-
-    imageBlob = bucket.get_blob('image.jpeg')
-    imageBlob.write(filePath)
+        ##filePath = os.path.join(path, "image.jpeg")
 
     return FileResponse(filePath)
