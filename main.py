@@ -67,6 +67,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
             image.write(image_data)
             image.close()
 
-        ##filePath = os.path.join(path, "image.jpeg")
+        filePath = os.path.join(path, "image.jpeg")
 
     return FileResponse(filePath)
