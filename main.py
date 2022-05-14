@@ -1,5 +1,4 @@
 import os
-import google
 from google.cloud import storage
 from fastapi import FastAPI, File
 from segmentation import get_yolov5, get_image_from_bytes
