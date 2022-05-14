@@ -1,5 +1,5 @@
 import os
-import gsutil from cp
+import gsutil 
 from fastapi import FastAPI, File
 from segmentation import get_yolov5, get_image_from_bytes
 from starlette.responses import Response
@@ -70,6 +70,6 @@ async def detect_return_base64_img(file: bytes = File(...)):
 
         filePath = os.path.join(path, "image.jpeg")
         
-        sendFile = gsutil cp /home/syafridamelania/newww/image.jpeg gs://olvwl-server.appspot.com
+        sendFile = gsutil /home/syafridamelania/newww/image.jpeg gs://olvwl-server.appspot.com
 
     return imageResult
