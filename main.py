@@ -75,7 +75,7 @@ async def detect_return_base64_img(file: bytes = File(...)):
         blob.make_public()
         url = blob.public_url
         blob.cache_control = public
-        blob.max-age = 0
+        blob.max_age = 0
 
         jsonConvert = '{"imageUrl" : "https://storage.googleapis.com/olvwl-server.appspot.com/image.jpeg"}'
         x = json.loads(jsonConvert)
